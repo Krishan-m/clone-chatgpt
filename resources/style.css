@@ -1,0 +1,54 @@
+aside {
+    background-color: #c7c7c7;
+    width: 20%;
+    height: 100vh;
+    position: relative;
+    transition: transform 0.2s ease-out;
+}
+
+div[id^="sidebarCloser"] {
+    background-color: #848484;
+    width: 5px;
+    height: 13px;
+    position: relative;
+    border-radius: 12px;
+    transition-duration: 0.2s;
+}
+
+#sidebarCloserTop {
+    margin: -1px 0px;
+    border-radius: 12px 12px 0 0;
+}
+
+#sidebarCloserBottom {
+    margin: 0px;
+    border-radius: 0px 0px 12px 12px;
+}
+
+#closerContainer {
+    position: absolute;
+    top: 50%;
+    right: -50px;
+    width: 50px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    cursor: pointer;
+    &:hover div[id^="sidebarCloser"]{
+        background-color: black;
+    }
+}
+
+.hide {
+    transform: translateX(-100%);
+}
+
+.rotate {
+    transform: rotate(16deg);
+}
+
+.anti-rotate {
+    transform: rotate(-16deg);
+}
