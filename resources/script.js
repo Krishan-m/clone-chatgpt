@@ -28,8 +28,8 @@ function postUserQuery() {
 function getBotResponse() {
     setTimeout(() => {
         let botResponse = "This is what GPT said..."; // Add orignal response from GPT
+        addResponseToChatBox(botResponse, sender = "bot");
     }, 1000);
-    addResponseToChatBox(botResponse, sender = "bot");
 }
 
 // Event Listeners
