@@ -25,7 +25,8 @@ function postUserQuery() {
     getBotResponse();
 }
 
-function getBotResponse() {
+async function getBotResponse() {
+    // TODO: Get response from chatGPT API
     setTimeout(() => {
         let botResponse = "This is what GPT said..."; // Add orignal response from GPT
         addResponseToChatBox(botResponse, sender = "bot");
