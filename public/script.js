@@ -27,10 +27,16 @@ function postUserQuery() {
 
 async function getBotResponse() {
     // TODO: Get response from chatGPT API
-    setTimeout(() => {
-        let botResponse = "This is what GPT said..."; // Add orignal response from GPT
-        addResponseToChatBox(botResponse, sender = "bot");
-    }, 1000);
+    let botResponse = await ollama.chat({
+        model: "llama2",
+        messages: [{role: 'user', content: userQuery.value}]
+    })
+    addResponseToChatBox(botResponse.message.content, sender = "bot");
+    
+    // setTimeout(() => {
+    //     let botResponse = "This is what GPT said..."; // Add orignal response from GPT
+    //     addResponseToChatBox(botResponse, sender = "bot");
+    // }, 1000);
 }
 
 // Event Listeners

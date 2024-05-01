@@ -171,6 +171,13 @@ main{
     margin: -20px auto;
 }
 
+#chatBox form{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
 #chatBox #userQuery{
     height: 100%;
     width: 80%;
@@ -189,6 +196,7 @@ main{
     background-color: #dfdfdf;
     border: none;
     border-radius: 5px;
+    cursor: pointer;
 }
 
 footer{
