@@ -10,7 +10,9 @@ Currently developing an express app to use the llama2 model
 - If I like your work, I will make you a contributor!
 
 ## BUGS!
-- ollama.chat not getting recognized
+- ollama is working fine when the js file type is module but gives error when type is commonjs
+- ollama.chat not getting recognized in commonjs file type
+- __dirname not recognized when shifted to module file type
 ---
 
 ## TODO:
