@@ -1,6 +1,6 @@
 const express = require('express')
 const path = require('path')
-const ollama = require('ollama');
+const {default: ollama} = require('ollama');
 const port = 3000;
 
 const app = express()
@@ -19,8 +19,6 @@ app.post('/sendChat', async (req, res)=>{
         model: 'llama2',
         messages: [{ role: 'user', content: req.body.userQuery }]
       });
-      console.log(response.message.content);    
-    console.log(req.body.userQuery)
 })
 
 app.listen(port)
