@@ -10,10 +10,9 @@ Currently developing an express app to use the llama2 model
 - If I like your work, I will make you a contributor!
 
 ## BUGS!
-- ollama is working fine when the js file type is module but gives error when type is commonjs
-- ollama.chat not getting recognized in commonjs file type
-- __dirname not recognized when shifted to module file type
+- index.js file is not working fine with ./public/script.js
+- The ollama model is giving response if we disable script.js otherwise the content of response is just empty
 ---
 
 ## TODO:
-- Use **LLAMA2 Model** from ollama to make calls and display real responses of the Generative model instead of currently showing dummy responses
+- Display the LLM's message in front end
