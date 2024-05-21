@@ -5,42 +5,11 @@ const sendChat = document.getElementById('sendChat');
 const userQuery = document.getElementById("userQuery");
 const sidebarCloserTop = sidebarCloser.children[0];
 const sidebarCloserBottom = sidebarCloser.children[1];
-const username = "John Wick";
-
-// Adding user query to chatbox
-function addResponseToChatBox(message, sender) {
-    if (sender.toLowerCase() == "user") sender = "You";
-    else if (sender.toLowerCase() == "bot") sender = "ChatGPTT";
-    else throw Error("Invalid value for parameter 'sender'");
-    let messageBox = document.createElement('div');
-    messageBox.classList.add('user-message'); // Add different class for user and bot
-    messageBox.innerHTML = `<span><b>${sender}</b></span><p>${message}</p>`;
-    document.getElementById('chatDisplay').insertAdjacentElement('beforeend', messageBox);
-}
-
-async function postUserQuery() {
-    let query = userQuery.value;
-    addResponseToChatBox(message = query, sender = "user");
-    userQuery.value = "";
-    await getBotResponse();
-}
-
-async function getBotResponse() {
-    // TODO: Get response from chatGPT API
-    // let botResponse = await ollama.chat({
-    //     model: "llama2",
-    //     messages: [{role: 'user', content: userQuery.value}]
-    // }).message.content
-    
-    setTimeout(() => {
-        let botResponse = "This is what GPT said..."; // Add orignal response from GPT
-        addResponseToChatBox(botResponse, sender = "bot");
-    }, 1000);
-}
-
+// const username = "John Wick";
+document.onload = () => console.log("Hello world")
 // Event Listeners
 sidebarCloser.addEventListener('mouseenter', () => {
-    if (!sidebar.classList.contains('hide')){
+    if (!sidebar.classList.contains('hide')) {
         sidebarCloserTop.classList.add('rotate')
         sidebarCloserBottom.classList.add('anti-rotate')
     }
@@ -67,3 +36,27 @@ sendChat.addEventListener('click', postUserQuery)
 userQuery.addEventListener('keydown', (event) => {
     if (event.key == 'Enter') postUserQuery();
 })
+
+function addResponseToChatBox(message, sender) {
+    if (sender.toLowerCase() == "user") sender = "You";
+    else if (sender.toLowerCase() == "bot") sender = "ChatGPTT";
+    else throw Error("Invalid value for parameter 'sender'");
+    let messageBox = document.createElement('div');
+    messageBox.classList.add('user-message'); // Add different class for user and bot
+    messageBox.innerHTML = `<span><b>${sender}</b></span><p>${message}</p>`;
+    document.getElementById('chatDisplay').insertAdjacentElement('beforeend', messageBox);
+}
+
+async function postUserQuery() {
+    let query = userQuery.value;
+    addResponseToChatBox(message = query, sender = "user");
+    userQuery.value = "";
+    await getBotResponse();
+}
+
+async function getBotResponse() {
+    const response = await fetch('/response/sendChat')
+    response = await response.json()
+    console.log("This is front end response")
+    console.log(response)
+}
